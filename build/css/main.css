@@ -1,0 +1,138 @@
+body {
+  background-color: #f8f8f8;
+  font-family: Helvetica, sans-serif;
+}
+
+.shadow {
+  padding: 10px;
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.radius {
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #eee;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+
+.radius2 {
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #eee;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.shape, .shape2, .shape3 {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  width: 300px;
+}
+
+.parent .child {
+  background-color: #555;
+}
+
+.parent:hover {
+  background-color: #222;
+}
+
+.shape2, .shape3 {
+  background-color: #222;
+}
+
+.shape4 {
+  background-color: #444;
+  color: #aaa;
+}
+
+.mixin1 {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.mixin2 {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.extend1, .extend2 {
+  background-color: #222;
+}
+
+@media screen and (max-width: 767px) {
+  .shadow {
+    background-color: #888;
+  }
+}
+
+@media screen and (max-width: 1170px) {
+  .media {
+    background-color: #444;
+  }
+}
+
+.math {
+  color: #444;
+  background-color: #ccc;
+  padding: 10px;
+}
+
+@media screen and (max-width: 170px) {
+  .math {
+    background-color: #222;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .width {
+    float: none;
+  }
+}
+
+.content {
+  background-color: #ddd;
+}
+
+@media screen and (max-width: 480px) {
+  .content2 {
+    width: 100%;
+  }
+}
+
+.setBg {
+  background-color: #ddd;
+}
+
+.retinize {
+  height: 200px;
+  background-repeat: no-repeat;
+  background-image: url("../../img/logo.png");
+  background-size: 200px 200px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
+  .retinize {
+    background-image: url("../../img/logo-2x.png");
+    background-size: 200px 200px;
+  }
+}
+
+.nest {
+  color: #333;
+  background-color: #eee;
+}
+
+.arg {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15) 2px 2px 2px rgba(0, 0, 0, 0.25);
+}

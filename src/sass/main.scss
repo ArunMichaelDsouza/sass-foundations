@@ -1,0 +1,190 @@
+// Test sass script
+
+// Variables
+$bgColor: #f8f8f8;
+$baseFont: Helvetica, sans-serif;
+
+body {
+	background-color: $bgColor;
+	font-family: $baseFont;
+}
+
+// Partial imports
+@import "partials/mixins";
+
+// Mixins
+.shadow {
+	padding: 10px;
+	@include boxShadow(1px, 1px, 1px, rgba(0,0,0,.15));
+}
+
+// Mixins with default params
+.radius {
+	padding: 10px;
+	width: 100px;
+	height: 100px;
+	background-color: #eee;
+	@include borderRadius;
+}
+
+// Overriding default mixin params
+.radius2 {
+	padding: 10px;
+	width: 100px;
+	height: 100px;
+	background-color: #eee;
+	@include borderRadius(20px);
+}
+
+// Mixin include to repeat styles
+.shape {
+	@include style;
+}
+
+// Nesting 
+.parent {
+	.child {
+		background-color: #555;
+	}
+
+	&:hover {
+		background-color: #222;
+	}
+}
+
+// Extends
+.shape2 {
+	@extend .shape;
+	background-color: #222;
+}
+
+// Multiple extends
+.shape3 {
+	@extend .shape;
+	@extend .shape2;
+}
+
+// Placeholder extend
+%placeholderExtend {
+	background-color: #444;
+	color: #aaa;
+}
+
+.shape4 {
+	@extend %placeholderExtend;
+}
+
+// Mixin vs extend
+.mixin1 {
+	@include borderRadius(20px);
+}
+
+.mixin2 {
+	@include borderRadius(20px);
+}
+
+.extend1 {
+	background-color: #222;
+}
+
+.extend2 {
+	@extend .extend1;
+}
+
+// Media queries
+.shadow {
+	@media screen and (max-width: 767px) {
+		background-color: #888;
+	}
+}
+
+// Breakpoint variables
+$largeScreen : 1170px;
+
+.media {
+	@media screen and (max-width: $largeScreen) {
+		background-color: #444;
+	}
+}
+
+// Math operators
+
+.math {
+	color: #444;
+	background-color: #ccc;
+	padding: 10px;
+	@media screen and (max-width: 140px + 30px) {
+		background-color: #222;
+	}
+}
+
+// Interpolation brackets
+$query : "screen and (max-width: 600px)";
+
+.width {
+	@media #{$query} {
+		float: none;
+	}
+}
+
+// Content block 
+@mixin content {
+	@content;
+}
+
+.content {
+	@include content {
+		background-color: #ddd;
+	}
+}
+
+// Media query content block
+@mixin content2($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+.content2 {
+	@include content2(480px) {
+		width: 100%;
+	}
+}
+
+// If/else block
+.setBg {
+	@include setBg(200px);
+}
+
+// Retinize images
+.retinize {
+	height: 200px;
+	background-repeat: no-repeat;
+	@include retinize('../../img/logo', '../../img/logo-2x', png, 200px, 200px);
+}
+
+// Nested mixins
+@mixin one {
+	background-color: #eee;
+}
+
+@mixin two {
+	color: #333;
+	@include one;
+}
+
+.nest {
+	@include two;
+}
+
+// Variable arguments in mixin
+@mixin variable($shadows...) {
+	box-shadow: $shadows;
+}
+
+.arg {
+	@include variable(1px 1px 1px rgba(0,0,0,.15) 2px 2px 2px rgba(0,0,0,.25));
+}
+
+
+

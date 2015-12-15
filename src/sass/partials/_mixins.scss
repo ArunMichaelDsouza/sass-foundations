@@ -1,0 +1,42 @@
+// Mixins 
+
+@mixin boxShadow($x, $y, $blur, $color) {
+	-webkit-box-shadow: $x $y $blur $color;
+	-moz-box-shadow: $x $y $blur $color;
+	box-shadow: $x $y $blur $color;
+}
+
+@mixin borderRadius($r: 40px) {
+	-webkit-border-radius: $r;
+	-moz-border-radius: $r;
+	border-radius: $r;
+}
+
+@mixin style {
+	background-color: #444;
+	color: #fff;
+	padding: 10px;
+	width: 300px;
+}
+
+@mixin setBg($width) {
+	@if $width == 100px or $width == 200px{
+		background-color: #ddd;
+	}
+	@else {
+		background-color: #444;
+	}
+}
+
+@mixin retinize($file, $file-2x, $type, $w, $h) {
+	background-image: url($file+'.'+$type);
+	background-size: $w $h;
+	@media (-webkit-min-device-pixel-ratio: 1.5),
+		(min--moz-device-pixel-ratio: 1.5),
+		(-o-min-device-pixel-ratio: 3/2),
+		(min-device-pixel-ratio: 1.5),
+		(min-resolution: 1.5dppx) {
+			background-image: url($file-2x+'.'+$type);
+			background-size: $w $h;
+		}
+}
